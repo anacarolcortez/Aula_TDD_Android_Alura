@@ -22,11 +22,19 @@ public class Leilao implements Serializable {
 
     public void fazerLance(Lance lance){
         double valorLance = lance.getValorLance();
-        if (valorLance > maiorLance){
-            maiorLance = valorLance;
-        }
+        calculaMaiorLance(valorLance);
+        calculaMenorLance(valorLance);
+    }
+
+    private void calculaMenorLance(double valorLance) {
         if (valorLance < menorLance ){
                 menorLance = valorLance;
+        }
+    }
+
+    private void calculaMaiorLance(double valorLance) {
+        if (valorLance > maiorLance){
+            maiorLance = valorLance;
         }
     }
 
