@@ -9,6 +9,8 @@ import java.io.Serializable;
 
 import br.com.alura.leilao.R;
 import br.com.alura.leilao.model.Leilao;
+import br.com.alura.leilao.model.Lance;
+
 
 public class LancesLeilaoActivity extends AppCompatActivity {
 
@@ -22,9 +24,15 @@ public class LancesLeilaoActivity extends AppCompatActivity {
             TextView descricao = findViewById(R.id.lances_leilao_descricao);
             TextView maiorLance = findViewById(R.id.lances_leilao_maior_lance);
             TextView menorLance = findViewById(R.id.lances_leilao_menor_lance);
+            TextView maioresLances = findViewById(R.id.lances_leilao_maiores_lances);
             descricao.setText(leilao.getDescricao());
             maiorLance.setText(String.valueOf(leilao.getMaiorLance()));
             menorLance.setText(String.valueOf(leilao.getMenorLance()));
+            StringBuilder sb = new StringBuilder();
+            for (Lance lance: leilao.getTresMaioresLances()){
+                sb.append(lance.getValorLance() + "\n");
+            }
+            maioresLances.setText(sb.toString());
         }
     }
 }

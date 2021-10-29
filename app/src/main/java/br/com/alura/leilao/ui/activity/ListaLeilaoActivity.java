@@ -38,6 +38,7 @@ public class ListaLeilaoActivity extends AppCompatActivity {
         Leilao console = new Leilao("Console");
         console.fazerLance(new Lance(new Usuario("Carol"), 1105.20));
         console.fazerLance(new Lance(new Usuario("Ana"), 2300.75));
+        console.fazerLance(new Lance(new Usuario("Ana Carol"), 2350.00));
         return new ArrayList<>(Arrays.asList(
                 console
         ));

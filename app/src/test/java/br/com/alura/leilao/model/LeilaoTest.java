@@ -92,4 +92,34 @@ public class LeilaoTest {
         assertEquals(300.0, tresMaioresLances.get(2).getValorLance(), DELTA);
     }
 
+    @Test
+    public void getTresMaioresLancesAoReceberMaisDeTresLances() {
+        leilaoTeste.fazerLance(new Lance(carol, 400.0));
+        leilaoTeste.fazerLance(new Lance(ana, 300.0));
+        leilaoTeste.fazerLance(new Lance(carol, 600.0));
+        leilaoTeste.fazerLance(new Lance(ana, 500.0));
+        leilaoTeste.fazerLance(new Lance(carol, 700.0));
+        List<Lance> tresMaioresLances = leilaoTeste.getTresMaioresLances();
+        assertEquals(3, tresMaioresLances.size());
+        assertEquals(700.0, tresMaioresLances.get(0).getValorLance(), DELTA);
+        assertEquals(600.0, tresMaioresLances.get(1).getValorLance(), DELTA);
+        assertEquals(500.0, tresMaioresLances.get(2).getValorLance(), DELTA);
+    }
+
+    @Test
+    public void getTresMaioresLancesAoReceberMenosDeTresLances() {
+        leilaoTeste.fazerLance(new Lance(carol, 400.0));
+        leilaoTeste.fazerLance(new Lance(ana, 300.0));
+        List<Lance> tresMaioresLances = leilaoTeste.getTresMaioresLances();
+        assertEquals(2, tresMaioresLances.size());
+        assertEquals(400.0, tresMaioresLances.get(0).getValorLance(), DELTA);
+        assertEquals(300.0, tresMaioresLances.get(1).getValorLance(), DELTA);
+    }
+
+    @Test
+    public void getTresMaioresLancesAoNaoReceberLances() {
+        List<Lance> tresMaioresLances = leilaoTeste.getTresMaioresLances();
+        assertEquals(0, tresMaioresLances.size());
+    }
+
 }
